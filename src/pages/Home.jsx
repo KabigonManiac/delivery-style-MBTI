@@ -28,9 +28,9 @@ const Wrapper = styled.div`
     height: 100%;
     background: ${({ $isSmallScreen }) =>
       $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "none"};
-    filter: brightness(1); /* 밝기 조정 */
-    opacity: 0.6; /* 투명도 조정 */
-    z-index: -1; /* 배경이 뒤로 가도록 설정 */
+    filter: brightness(1.2);
+    opacity: 0.4;
+    z-index: -1;
   }
 `;
 
@@ -40,9 +40,9 @@ const Header = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "30px")};
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "16px" : "30px")};
   font-weight: bold;
-  margin: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "20px")};
+  margin: ${({ $isSmallScreen }) => ($isSmallScreen ? "18px 0 0 0" : "20px")};
 `;
 
 const Desc = styled.div`

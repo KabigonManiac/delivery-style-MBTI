@@ -57,7 +57,7 @@ const ButtonGroup = styled.div`
   & > button {
     width: ${({ $isSmallScreen }) => ($isSmallScreen ? "320px" : "600px")};
     height: ${({ $isSmallScreen }) => ($isSmallScreen ? "200px" : "400px")};
-    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "18px")};
+    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "14px" : "18px")};
   }
 `;
 
