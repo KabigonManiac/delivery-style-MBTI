@@ -29,7 +29,7 @@ const Wrapper = styled.div`
     background: ${({ $isSmallScreen }) =>
       $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "none"};
     filter: brightness(1.2);
-    opacity: 0.4;
+    opacity: 0.1;
     z-index: -1;
   }
 `;
