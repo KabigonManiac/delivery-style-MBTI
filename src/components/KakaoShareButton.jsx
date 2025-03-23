@@ -27,8 +27,9 @@ const KakaoShareButton = ({ data }) => {
     Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "예비 집사 판별기 결과",
-        description: `예비 집사님이 고양이를 키운다면 가장 잘맞는 고양이는 ${data.resultData} ${data.name}입니다.`,
+        title: "나만의 배달 습관 MBTI 결과",
+        description: `내 음식 취향과 배달 습관에 따른 MBTI 는 <br />
+          ${resultData.best}형 ${resultData.name}입니다.`,
         imageUrl: `${url}${data.image}`,
         link: {
           mobileWebUrl: resultURL,
