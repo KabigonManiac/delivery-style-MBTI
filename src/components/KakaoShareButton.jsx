@@ -1,21 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import KaKaoLogo from "../image/kakao.png";
 import { ResultData } from "../assets/resultData";
 const { Kakao } = window;
 
-const KakaoLogo = styled.img``;
+const KakaoLogoImg = styled.img``;
 
 const Sharebtn = styled.div`
   display: flex;
   text-align: center;
 `;
 
-const KakaoShareButton = ({ data }) => {
-  console.log(data);
+const KakaoShareButton = ({ mbti }) => {
+  const [resultData, setResultData] = useState(null);
   const url = "https://deliverymbti.netlify.app/";
   const resultURL = window.location.href;
+
+  useEffect(() => {
+    const result = ResultData.find((s) => s.best === mbti);
+    setResultData(result);
+  }, [mbti]);
 
   useEffect(() => {
     Kakao.cleanup();
@@ -23,14 +28,13 @@ const KakaoShareButton = ({ data }) => {
   }, []);
 
   const sharekakao = () => {
-    console.log("test");
+    if (!resultData) return; // 데이터가 없으면 실행 안 함
     Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "나만의 배달 습관 MBTI 결과",
-        description: `내 음식 취향과 배달 습관에 따른 MBTI 는 <br />
-          ${resultData.best}형 ${resultData.name}입니다.`,
-        imageUrl: `${url}${data.image}`,
+        title: "예비 집사 판별기 결과",
+        description: `내 음식 취향과 배달 습관에 따른 MBTI 는 ${resultData.best} ${resultData.name}입니다.`,
+        imageUrl: `${url}${resultData.image}`,
         link: {
           mobileWebUrl: resultURL,
           webUrl: resultURL,
@@ -51,10 +55,10 @@ const KakaoShareButton = ({ data }) => {
   return (
     <Button variant="warning" onClick={sharekakao}>
       <Sharebtn>
-        <KakaoLogo
+        <KakaoLogoImg
           src={KaKaoLogo}
           alt="Kakao Logo"
-          style={{ width: "24px", marginRight: "4px" }} // 이미지 스타일 조정
+          style={{ width: "24px", marginRight: "4px" }}
         />
         친구 공유하기
       </Sharebtn>
