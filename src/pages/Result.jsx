@@ -22,6 +22,22 @@ const Wrapper = styled.div`
   background: #a1c4fd;
 `;
 
+const Title = styled.div`
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "32px" : "42px")};
+  margin-bottom: 12px;
+`;
+
+const SubTitle = styled.div`
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "22px" : "32px")};
+  margin-bottom: 12px;
+  color: #181818;
+`;
+const Desc = styled.div`
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "18px" : "22px")};
+  margin: 20px 0;
+  color: #181818;
+  line-height: 1.4;
+`;
 const ButtonGroup = styled.div`
   display: flex;
   gap: 18px;
@@ -161,13 +177,13 @@ const Result = () => {
 
   return (
     <Wrapper $isSmallScreen={isSmallScreen} ref={resultRef}>
-      <h1>나만의 배달 습관 MBTI</h1>
-      <h2>결과보기</h2>
+      <Title $isSmallScreen={isSmallScreen}>나만의 배달 습관 MBTI</Title>
+      <SubTitle $isSmallScreen={isSmallScreen}>결과보기</SubTitle>
       <img src={resultData.image} alt="결과 이미지" width="300px" />
-      <p>
+      <Desc $isSmallScreen={isSmallScreen}>
         내 음식 취향과 배달 습관에 따른 MBTI는 <br />
         {resultData.best}형 {resultData.name}입니다.
-      </p>
+      </Desc>
       <ButtonGroup>
         <RestartButton
           $isSmallScreen={isSmallScreen}
