@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { QuestionData } from "../assets/questiondata";
 import FoodBg from "../image/foodbg.jpg";
-import LoadingResult from "./Lodadingresult";
+import LoadingResult from "./LodadingResult";
 
 const Wrapper = styled.div`
   position: relative;
