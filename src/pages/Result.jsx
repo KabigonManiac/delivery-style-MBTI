@@ -12,18 +12,49 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
-  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "88vh" : "98vh")};
+  height: ${({ $isSmallScreen }) =>
+    $isSmallScreen ? "80vh" : "88vh"}; /* 높이 조정 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: #fff;
+  background: #fff;
+  overflow: auto; /* 내부 스크롤 허용 */
+`;
+
+const Inner = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: #fff;
-  background: #a1c4fd;
+  height: ${({ $isSmallScreen }) =>
+    $isSmallScreen ? "60vh" : "90vh"}; /* 높이 줄이기 */
+`;
+
+const InnerLineTop = styled.div`
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "90%")};
+  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "10px")};
+  background-color: ${({ $isSmallScreen }) =>
+    $isSmallScreen ? "dodgerblue" : "transparent"};
+  margin-top: 20px;
+`;
+
+const InnerLineBottom = styled.div`
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "90%")};
+  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "10px")};
+  background-color: ${({ $isSmallScreen }) =>
+    $isSmallScreen ? "dodgerblue" : "transparent"};
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const Title = styled.div`
-  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "32px" : "42px")};
+  color: #181818;
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "28px" : "42px")};
+  margin-top: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "0")};
   margin-bottom: 12px;
 `;
 
@@ -32,21 +63,30 @@ const SubTitle = styled.div`
   margin-bottom: 12px;
   color: #181818;
 `;
+
 const Desc = styled.div`
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "18px" : "22px")};
   margin: 20px 0;
   color: #181818;
   line-height: 1.4;
 `;
+
+const Highlight = styled.span`
+  background: linear-gradient(transparent 50%, #ffeb3b 50%);
+  padding: 2px 4px;
+  border-radius: 4px;
+`;
+
 const ButtonGroup = styled.div`
   display: flex;
   gap: 18px;
-  margin-top: 20px;
+  margin-top: 12px;
 `;
 
 const KakaoLogo = styled.img`
   width: 40px;
 `;
+
 const RestartButton = styled.div`
   display: flex;
   justify-content: center;
@@ -58,25 +98,27 @@ const RestartButton = styled.div`
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "16px")};
   position: relative;
   cursor: pointer;
+
   span {
     display: ${({ $isSmallScreen }) => ($isSmallScreen ? "none" : "block")};
   }
 
   .hover-text {
-    display: none;
+    display: none; /* 기본적으로 숨김 */
     position: absolute;
     left: -4px;
-    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    bottom: -20px;
     font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
-    color: dodgerblue;
+    color: #181818;
     width: 80px;
   }
 
-  &:hover .hover-text {
-    display: block;
+  @media (max-width: 768px) {
+    &:hover .hover-text {
+      display: block; /* 모바일에서만 호버 시 표시 */
+    }
   }
 `;
-
 const LinkcopyButton = styled.div`
   display: flex;
   justify-content: center;
@@ -93,17 +135,19 @@ const LinkcopyButton = styled.div`
   }
 
   .hover-text {
-    display: none;
+    display: none; /* 기본적으로 숨김 */
     position: absolute;
-    left: -1px;
-    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    left: -4px;
+    bottom: -20px;
     font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
     color: #181818;
     width: 80px;
   }
 
-  &:hover .hover-text {
-    display: block;
+  @media (max-width: 768px) {
+    &:hover .hover-text {
+      display: block; /* 모바일에서만 호버 시 표시 */
+    }
   }
 `;
 
@@ -124,17 +168,19 @@ const ShareButton = styled.div`
   }
 
   .hover-text {
-    display: none;
+    display: none; /* 기본적으로 숨김 */
     position: absolute;
     left: -4px;
-    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    bottom: -20px;
     font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
     color: #181818;
     width: 80px;
   }
 
-  &:hover .hover-text {
-    display: block;
+  @media (max-width: 768px) {
+    &:hover .hover-text {
+      display: block; /* 모바일에서만 호버 시 표시 */
+    }
   }
 `;
 
@@ -177,40 +223,57 @@ const Result = () => {
 
   return (
     <Wrapper $isSmallScreen={isSmallScreen} ref={resultRef}>
-      <Title $isSmallScreen={isSmallScreen}>나만의 배달 습관 MBTI</Title>
-      <SubTitle $isSmallScreen={isSmallScreen}>결과보기</SubTitle>
-      <img src={resultData.image} alt="결과 이미지" width="300px" />
-      <Desc $isSmallScreen={isSmallScreen}>
-        내 음식 취향과 배달 습관에 따른 MBTI는 <br />
-        {resultData.best}형 {resultData.name}입니다.
-      </Desc>
-      <ButtonGroup>
-        <RestartButton
-          $isSmallScreen={isSmallScreen}
-          onClick={handleClickButton}
-        >
-          <FontAwesomeIcon icon={faPlay} />
-          <span>테스트 다시하기</span>
-          <span className="hover-text">테스트 다시하기</span>
-        </RestartButton>
+      <InnerLineTop $isSmallScreen={isSmallScreen} />
+      <Inner $isSmallScreen={isSmallScreen}>
+        <Title $isSmallScreen={isSmallScreen}>나만의 배달 습관 MBTI</Title>
+        <SubTitle $isSmallScreen={isSmallScreen}>결과보기</SubTitle>
+        <img
+          src={resultData.image}
+          alt="결과 이미지"
+          style={{
+            borderRadius: "50%",
+            width: "200px",
+            height: "200px",
+            objectFit: "cover",
+            aspectRatio: "1/1",
+          }}
+        />
+        <Desc $isSmallScreen={isSmallScreen}>
+          내 음식 취향과 배달 습관에 따른 MBTI는 <br />
+          <Highlight>
+            {resultData.best}형 {resultData.name}
+          </Highlight>{" "}
+          입니다.
+        </Desc>
+        <ButtonGroup>
+          <RestartButton
+            $isSmallScreen={isSmallScreen}
+            onClick={handleClickButton}
+          >
+            <FontAwesomeIcon icon={faPlay} />
+            <span>테스트 다시하기</span>
+            <span className="hover-text">테스트 다시하기</span>
+          </RestartButton>
 
-        <KakaoShareButton variant="warning" mbti={mbti}>
-          <KakaoLogo src="/cat/kakao.png" />
-          <span> 결과 공유하기</span>
-        </KakaoShareButton>
-        <LinkcopyButton
-          onClick={handleInstagramShare}
-          $isSmallScreen={isSmallScreen}
-        >
-          <FontAwesomeIcon icon={faLink} /> <span>링크 복사하기</span>
-          <span className="hover-text">링크 복사하기</span>
-        </LinkcopyButton>
-        <ShareButton onClick={handleSaveImage} $isSmallScreen={isSmallScreen}>
-          <FontAwesomeIcon icon={faDownload} />
-          <span>사진으로 저장하기</span>
-          <span className="hover-text">사진 저장하기</span>
-        </ShareButton>
-      </ButtonGroup>
+          <KakaoShareButton variant="warning" mbti={mbti}>
+            <KakaoLogo src="/cat/kakao.png" />
+            <span> 결과 공유하기</span>
+          </KakaoShareButton>
+          <LinkcopyButton
+            onClick={handleInstagramShare}
+            $isSmallScreen={isSmallScreen}
+          >
+            <FontAwesomeIcon icon={faLink} /> <span>링크 복사하기</span>
+            <span className="hover-text">링크 복사하기</span>
+          </LinkcopyButton>
+          <ShareButton onClick={handleSaveImage} $isSmallScreen={isSmallScreen}>
+            <FontAwesomeIcon icon={faDownload} />
+            <span>사진 저장하기</span>
+            <span className="hover-text">사진 저장하기</span>
+          </ShareButton>
+        </ButtonGroup>
+      </Inner>
+      <InnerLineBottom $isSmallScreen={isSmallScreen} />
     </Wrapper>
   );
 };

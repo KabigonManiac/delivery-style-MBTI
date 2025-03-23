@@ -30,17 +30,19 @@ const Sharebtn = styled.button`
     display: ${({ $isSmallScreen }) => ($isSmallScreen ? "none" : "block")};
   }
   .hover-text {
-    display: none;
+    display: none; /* 기본적으로 숨김 */
     position: absolute;
-    left: -8px;
-    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    left: -4px;
+    bottom: -20px;
     font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
     color: #181818;
     width: 80px;
   }
 
-  &:hover .hover-text {
-    display: block;
+  @media (max-width: 768px) {
+    &:hover .hover-text {
+      display: block; /* 모바일에서만 호버 시 표시 */
+    }
   }
 `;
 
