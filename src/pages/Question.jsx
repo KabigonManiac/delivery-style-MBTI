@@ -5,6 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { QuestionData } from "../assets/questiondata";
 import FoodBg from "../image/foodbg.jpg";
+import LoadingResult from "./Lodadingresult";
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,7 +19,6 @@ const Wrapper = styled.div`
     $isSmallScreen ? "transparent" : "#fff"};
   overflow: auto;
 
-  // 배경 흐림 효과 적용
   &::before {
     content: "";
     position: absolute;
@@ -28,9 +28,9 @@ const Wrapper = styled.div`
     height: 100%;
     background: ${({ $isSmallScreen }) =>
       $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "none"};
-    filter: brightness(0.9); /* 밝기 조정 */
-    opacity: 0.2; /* 투명도 조정 */
-    z-index: -1; /* 배경이 뒤로 가도록 설정 */
+    filter: brightness(0.9);
+    opacity: 0.2;
+    z-index: -1;
   }
 `;
 
@@ -89,7 +89,8 @@ const Question = () => {
     { id: "TF", score: 0 },
     { id: "JP", score: 0 },
   ]);
-  const [clickedButton, setClickedButton] = useState(null); // 클릭한 버튼 추적
+  const [clickedButton, setClickedButton] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // 로딩 상태
 
   const navigate = useNavigate();
   const answerARef = useRef(null);
@@ -105,21 +106,28 @@ const Question = () => {
       ref.current.blur();
     }
 
-    setClickedButton(button); // 클릭한 버튼 상태 업데이트
+    setClickedButton(button);
 
+    // 마지막 질문일 때 로딩 화면 표시
     if (QuestionData.length !== questionNo + 1) {
       setQuestionNo(questionNo + 1);
     } else {
-      const mbti = newScore.reduce(
-        (acc, curr) =>
-          acc +
-          (curr.score >= 2 ? curr.id.substring(0, 1) : curr.id.substring(1, 2)),
-        ""
-      );
-      navigate({
-        pathname: "/result",
-        search: `?${createSearchParams({ mbti })}`,
-      });
+      setIsLoading(true); // 로딩 시작
+      setTimeout(() => {
+        const mbti = newScore.reduce(
+          (acc, curr) =>
+            acc +
+            (curr.score >= 2
+              ? curr.id.substring(0, 1)
+              : curr.id.substring(1, 2)),
+          ""
+        );
+        setIsLoading(false); // 로딩 종료
+        navigate({
+          pathname: "/result",
+          search: `?${createSearchParams({ mbti })}`,
+        });
+      }, 6000); // 2초 후 결과로 이동
     }
   };
 
@@ -127,6 +135,7 @@ const Question = () => {
 
   return (
     <>
+      {isLoading && <LoadingResult />} {/* 로딩 화면 표시 */}
       <ProgressBar
         striped
         variant="info"
@@ -140,7 +149,7 @@ const Question = () => {
           <CustomButton
             ref={answerARef}
             variant="light"
-            $isClicked={clickedButton === "A"} // 클릭된 버튼 스타일 적용
+            $isClicked={clickedButton === "A"}
             onClick={() =>
               handleClickButton(
                 1,
@@ -166,7 +175,7 @@ const Question = () => {
           <CustomButton
             ref={answerBRef}
             variant="light"
-            $isClicked={clickedButton === "B"} // 클릭된 버튼 스타일 적용
+            $isClicked={clickedButton === "B"}
             onClick={() =>
               handleClickButton(
                 0,

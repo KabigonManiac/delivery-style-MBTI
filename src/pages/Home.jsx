@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodBg from "../image/foodbg.jpg";
-import Loading from "./\bLodading";
+import Loading from "./Lodading";
 
 const Wrapper = styled.div`
   display: flex;
