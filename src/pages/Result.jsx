@@ -12,7 +12,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import FoodBg from "../image/foodbg.jpg";
 
 const Wrapper = styled.div`
-  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "80vh" : "88vh")};
+  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "84.88vh" : "88vh")};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +50,7 @@ const Inner = styled.div`
 `;
 
 const InnerLineTop = styled.div`
-  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "90%")};
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "98%")};
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "10px")};
   background-color: ${({ $isSmallScreen }) =>
     $isSmallScreen ? "#ddd" : "transparent"};

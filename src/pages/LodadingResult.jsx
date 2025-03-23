@@ -98,7 +98,7 @@ const LoadingText = styled.div`
   text-align: center;
 `;
 
-const LoadingResult = () => {
+const Loadingresult = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -127,4 +127,4 @@ const LoadingResult = () => {
   );
 };
 
-export default LoadingResult;
+export default Loadingresult;
