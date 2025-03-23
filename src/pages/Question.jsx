@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #a1c4fd;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 `;
 
 const Title = styled.div`
@@ -20,7 +20,7 @@ const Title = styled.div`
   width: ${({ $isSmallScreen }) => ($isSmallScreen ? "300px" : "auto")};
   padding: ${({ $isSmallScreen }) => ($isSmallScreen ? "6px 12px" : "auto")};
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: ${({ $isSmallScreen }) => ($isSmallScreen ? "22px" : "100px")};
   padding: 8px 16px;
   background: rgba(255, 255, 255 0.2);
   color: #181818;
@@ -43,9 +43,9 @@ const ButtonGroup = styled.div`
 `;
 
 const CustomButton = styled(Button)`
-  background: "rgba(256,256,256, 0.2)";
+  background: "rgba(0,0,0, 0.8)";
   border: 2px solid transparent;
-  color: "#181818";
+  color: "#fff";
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,9 +53,10 @@ const CustomButton = styled(Button)`
   font-weight: bold;
   &:hover {
     background: ${({ $isClicked, $isSmallScreen }) =>
-      $isSmallScreen && $isClicked ? "#007bff" : "#fff"};
+      $isSmallScreen && $isClicked ? "#fff" : "rgba(0,0,0, 0.8)"};
     border: 2px solid ${({ $isClicked }) => ($isClicked ? "#ddd" : "#fff")};
-
+    color: ${({ $isClicked, $isSmallScreen }) =>
+      $isSmallScreen && $isClicked ? "#181818" : "#fff"};
     transform: scale(1.05);
     transition: all 0.2s ease-in-out;
   }
