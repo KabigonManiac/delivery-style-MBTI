@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
-import { Button } from "react-bootstrap";
 import { ResultData } from "../assets/resultData";
 import KakaoShareButton from "../components/KakaoShareButton";
 import html2canvas from "html2canvas"; // html2canvas 추가
