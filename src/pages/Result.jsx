@@ -96,7 +96,7 @@ const Result = () => {
         </Desc>
         <ButtonGroup>
           <Button onClick={handleClickButton}>TEST RESTART</Button>
-          <KakaoShareButton variant="warning" data={resultData}>
+          <KakaoShareButton variant="warning" mbti={mbti}>
             <KakaoLogo src="/cat/kakao.png" />
             결과 공유하기
           </KakaoShareButton>
