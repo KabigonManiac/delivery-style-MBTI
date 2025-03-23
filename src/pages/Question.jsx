@@ -18,7 +18,6 @@ const Wrapper = styled.div`
   background: ${({ $isSmallScreen }) =>
     $isSmallScreen ? "transparent" : "#fff"};
   overflow: auto;
-
   &::before {
     content: "";
     position: absolute;
