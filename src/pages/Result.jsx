@@ -21,8 +21,23 @@ const Wrapper = styled.div`
   width: 100%;
   color: #fff;
   background: ${({ $isSmallScreen }) =>
-    $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "#fff"};
+    $isSmallScreen ? "transparent" : "#fff"};
   overflow: auto;
+
+  // 배경 흐림 효과 적용
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${({ $isSmallScreen }) =>
+      $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "none"};
+    filter: brightness(0.9); /* 밝기 조정 */
+    opacity: 0.6; /* 투명도 조정 */
+    z-index: -1; /* 배경이 뒤로 가도록 설정 */
+  }
 `;
 
 const Inner = styled.div`

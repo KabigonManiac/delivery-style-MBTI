@@ -29,13 +29,13 @@ const Wrapper = styled.div`
     background: ${({ $isSmallScreen }) =>
       $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "none"};
     filter: brightness(0.9); /* 밝기 조정 */
-    opacity: 0.5; /* 투명도 조정 */
+    opacity: 0.2; /* 투명도 조정 */
     z-index: -1; /* 배경이 뒤로 가도록 설정 */
   }
 `;
 
 const Title = styled.div`
-  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "18px" : "30px")};
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "30px")};
   width: ${({ $isSmallScreen }) => ($isSmallScreen ? "300px" : "auto")};
   padding: ${({ $isSmallScreen }) => ($isSmallScreen ? "6px 12px" : "auto")};
   text-align: center;
