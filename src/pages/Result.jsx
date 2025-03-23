@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   color: #fff;
-  background: #ddd;
+  background: #a1c4fd;
 `;
 
 const Header = styled.div`

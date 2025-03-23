@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ddd;
+  background: #a1c4fd;
 `;
 
 const Title = styled.div`
@@ -42,17 +42,19 @@ const ButtonGroup = styled.div`
 `;
 
 const CustomButton = styled(Button)`
-  background: white;
-  border: 2px solid #007bff;
-  color: #007bff;
+  background: "#ddd";
+  border: 2px solid #ddd;
+  color: "#181818";
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
   &:hover {
-    background: #007bff;
-    border: 2px solid #fff;
-    color: white;
+    background: ${({ $isClicked, $isSmallScreen }) =>
+      $isSmallScreen && $isClicked ? "#007bff" : "#fff"};
+    border: 2px solid ${({ $isClicked }) => ($isClicked ? "#ddd" : "#fff")};
+
     transform: scale(1.05);
     transition: all 0.2s ease-in-out;
   }
@@ -66,27 +68,24 @@ const Question = () => {
     { id: "TF", score: 0 },
     { id: "JP", score: 0 },
   ]);
+  const [clickedButton, setClickedButton] = useState(null); // 클릭한 버튼 추적
 
   const navigate = useNavigate();
-
-  // 버튼 포커스를 제어하기 위한 useRef 설정
   const answerARef = useRef(null);
   const answerBRef = useRef(null);
 
-  // 중복된 함수 제거 후, handleClickButton 하나로 통합
-  const handleClickButton = (no, type, ref) => {
+  const handleClickButton = (no, type, ref, button) => {
     const newScore = totalScore.map((s) =>
       s.id === type ? { id: s.id, score: s.score + no } : s
     );
-
     setTotalScore(newScore);
 
-    // 버튼 클릭 후 포커스 해제
     if (ref && ref.current) {
       ref.current.blur();
     }
 
-    // 다음 질문으로 넘어가기
+    setClickedButton(button); // 클릭한 버튼 상태 업데이트
+
     if (QuestionData.length !== questionNo + 1) {
       setQuestionNo(questionNo + 1);
     } else {
@@ -116,32 +115,18 @@ const Question = () => {
         <Title $isSmallScreen={isSmallScreen}>
           {QuestionData[questionNo].title}
         </Title>
-        {/* <ButtonGroup $isSmallScreen={isSmallScreen}>
-          <CustomButton
-            ref={answerARef}
-            variant="light"
-            onClick={() =>
-              handleClickButton(1, QuestionData[questionNo].type, answerARef)
-            }
-          >
-            {QuestionData[questionNo].answera}
-          </CustomButton>
-          <CustomButton
-            ref={answerBRef}
-            variant="light"
-            onClick={() =>
-              handleClickButton(0, QuestionData[questionNo].type, answerBRef)
-            }
-          >
-            {QuestionData[questionNo].answerb}
-          </CustomButton>
-        </ButtonGroup> */}
         <ButtonGroup $isSmallScreen={isSmallScreen}>
           <CustomButton
             ref={answerARef}
             variant="light"
+            $isClicked={clickedButton === "A"} // 클릭된 버튼 스타일 적용
             onClick={() =>
-              handleClickButton(1, QuestionData[questionNo].type, answerARef)
+              handleClickButton(
+                1,
+                QuestionData[questionNo].type,
+                answerARef,
+                "A"
+              )
             }
           >
             <img
@@ -160,8 +145,14 @@ const Question = () => {
           <CustomButton
             ref={answerBRef}
             variant="light"
+            $isClicked={clickedButton === "B"} // 클릭된 버튼 스타일 적용
             onClick={() =>
-              handleClickButton(0, QuestionData[questionNo].type, answerBRef)
+              handleClickButton(
+                0,
+                QuestionData[questionNo].type,
+                answerBRef,
+                "B"
+              )
             }
           >
             <img

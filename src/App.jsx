@@ -37,10 +37,10 @@ ${reset}
   font-style: normal;
 } */
   @font-face {
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-    font-family: "Noto Sans KR", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
   }
 
 
@@ -57,8 +57,8 @@ a {
   color: inherit;
 }
 body {
-  font-family: "Noto Sans KR", sans-serif;
-    background: #ddd;
+  font-family: 'BMJUA';
+    background:#a1c4fd;
     /* background: url(https://mblogthumb-phinf.pstatic.net/MjAyMDAzMDVfMjgy/MDAxNTgzNDA1Nzc3MjIy.YGsJYEtAG6zXnuqhb354iQtjeSu3xw2O8oyhgNJ8hU0g.mbFsH3SGL2qkxlwQCdCq5Yhqm18CbnyaUSCpnbePUDIg.JPEG.westar4501/%EB%B0%B0%EA%B2%BD%ED%99%94%EB%A9%B4+%EB%85%B8%ED%8A%B8%EB%B6%81.jpg?type=w800) center/cover no-repeat;  */
     /* background: url(https://cdn.pixabay.com/photo/2024/03/24/03/25/cat-8652308_1280.jpg) center/cover no-repeat;  */
     /* background: url(https://blog.kakaocdn.net/dn/k2ftk/btq9t7DbLzw/7cPlWFd5W90KSaLkyOabE0/img.jpg) center/cover no-repeat;
