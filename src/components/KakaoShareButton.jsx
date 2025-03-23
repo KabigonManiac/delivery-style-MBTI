@@ -1,21 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import KaKaoLogo from "../image/kakao.png";
 import { ResultData } from "../assets/resultData";
 const { Kakao } = window;
 
-const KakaoLogoImg = styled.img``;
+const KakaoLogoImg = styled.img`
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "40px" : "24px")};
+  height: auto;
+  margin-top: 4px;
+`;
 
-const Sharebtn = styled.div`
+const Sharebtn = styled.button`
   display: flex;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: ${({ $isSmallScreen }) => ($isSmallScreen ? "0" : "4px")};
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "60px" : "120px")};
+  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "60px" : "40px")};
+  background-color: #ffeb00;
+  border: none;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "0px" : "16px")};
+  font-weight: bold;
+  color: #3c1e1e;
+  span {
+    display: ${({ $isSmallScreen }) => ($isSmallScreen ? "none" : "block")};
+  }
+  .hover-text {
+    display: none;
+    position: absolute;
+    left: -8px;
+    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
+    color: #181818;
+    width: 80px;
+  }
+
+  &:hover .hover-text {
+    display: block;
+  }
 `;
 
 const KakaoShareButton = ({ mbti }) => {
   const [resultData, setResultData] = useState(null);
   const url = "https://deliverymbti.netlify.app/";
   const resultURL = window.location.href;
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
   useEffect(() => {
     const result = ResultData.find((s) => s.best === mbti);
@@ -28,7 +61,7 @@ const KakaoShareButton = ({ mbti }) => {
   }, []);
 
   const sharekakao = () => {
-    if (!resultData) return; // 데이터가 없으면 실행 안 함
+    if (!resultData) return;
     Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
@@ -53,16 +86,15 @@ const KakaoShareButton = ({ mbti }) => {
   };
 
   return (
-    <Button variant="warning" onClick={sharekakao}>
-      <Sharebtn>
-        <KakaoLogoImg
-          src={KaKaoLogo}
-          alt="Kakao Logo"
-          style={{ width: "24px", marginRight: "4px" }}
-        />
-        친구 공유하기
-      </Sharebtn>
-    </Button>
+    <Sharebtn onClick={sharekakao} $isSmallScreen={isSmallScreen}>
+      <KakaoLogoImg
+        $isSmallScreen={isSmallScreen}
+        src={KaKaoLogo}
+        alt="Kakao Logo"
+      />
+      <span>친구 공유하기</span>
+      <span className="hover-text">카톡 공유하기</span>
+    </Sharebtn>
   );
 };
 

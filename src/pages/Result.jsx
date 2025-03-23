@@ -6,6 +6,10 @@ import { Button } from "react-bootstrap";
 import { ResultData } from "../assets/resultData";
 import KakaoShareButton from "../components/KakaoShareButton";
 import html2canvas from "html2canvas"; // html2canvas 추가
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "88vh" : "98vh")};
@@ -20,12 +24,102 @@ const Wrapper = styled.div`
 
 const ButtonGroup = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 18px;
   margin-top: 20px;
 `;
 
 const KakaoLogo = styled.img`
   width: 40px;
+`;
+const RestartButton = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${({ $isSmallScreen }) => ($isSmallScreen ? "0" : "4px")};
+  align-items: center;
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "60px" : "120px")};
+  background-color: dodgerblue;
+  border-radius: 8px;
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "16px")};
+  position: relative;
+  cursor: pointer;
+  span {
+    display: ${({ $isSmallScreen }) => ($isSmallScreen ? "none" : "block")};
+  }
+
+  .hover-text {
+    display: none;
+    position: absolute;
+    left: -4px;
+    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
+    color: dodgerblue;
+    width: 80px;
+  }
+
+  &:hover .hover-text {
+    display: block;
+  }
+`;
+
+const LinkcopyButton = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${({ $isSmallScreen }) => ($isSmallScreen ? "0" : "4px")};
+  align-items: center;
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "60px" : "120px")};
+  background-color: #000;
+  border-radius: 8px;
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "16px")};
+  position: relative;
+  cursor: pointer;
+  span {
+    display: ${({ $isSmallScreen }) => ($isSmallScreen ? "none" : "block")};
+  }
+
+  .hover-text {
+    display: none;
+    position: absolute;
+    left: -1px;
+    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
+    color: #181818;
+    width: 80px;
+  }
+
+  &:hover .hover-text {
+    display: block;
+  }
+`;
+
+const ShareButton = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${({ $isSmallScreen }) => ($isSmallScreen ? "0" : "4px")};
+  align-items: center;
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "56px" : "120px")};
+  background-color: #fff;
+  color: #181818;
+  border-radius: 8px;
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "28px" : "16px")};
+  position: relative;
+  cursor: pointer;
+  span {
+    display: ${({ $isSmallScreen }) => ($isSmallScreen ? "none" : "block")};
+  }
+
+  .hover-text {
+    display: none;
+    position: absolute;
+    left: -4px;
+    bottom: -20px; /* 글자가 버튼 바로 아래에 위치하도록 */
+    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
+    color: #181818;
+    width: 80px;
+  }
+
+  &:hover .hover-text {
+    display: block;
+  }
 `;
 
 const Result = () => {
@@ -61,9 +155,7 @@ const Result = () => {
   const handleInstagramShare = () => {
     const shareUrl = window.location.href;
     navigator.clipboard.writeText(shareUrl).then(() => {
-      alert(
-        "결과 페이지 링크가 복사되었습니다. 인스타그램에서 붙여넣기 하세요!"
-      );
+      alert("결과 페이지 링크가 복사되었습니다!");
     });
   };
 
@@ -77,17 +169,31 @@ const Result = () => {
         {resultData.best}형 {resultData.name}입니다.
       </p>
       <ButtonGroup>
-        <Button onClick={handleClickButton}>TEST RESTART</Button>
+        <RestartButton
+          $isSmallScreen={isSmallScreen}
+          onClick={handleClickButton}
+        >
+          <FontAwesomeIcon icon={faPlay} />
+          <span>테스트 다시하기</span>
+          <span className="hover-text">테스트 다시하기</span>
+        </RestartButton>
+
         <KakaoShareButton variant="warning" mbti={mbti}>
           <KakaoLogo src="/cat/kakao.png" />
-          결과 공유하기
+          <span> 결과 공유하기</span>
         </KakaoShareButton>
-        <Button variant="primary" onClick={handleInstagramShare}>
-          인스타 공유하기
-        </Button>
-        <Button variant="success" onClick={handleSaveImage}>
-          사진으로 저장하기
-        </Button>
+        <LinkcopyButton
+          onClick={handleInstagramShare}
+          $isSmallScreen={isSmallScreen}
+        >
+          <FontAwesomeIcon icon={faLink} /> <span>링크 복사하기</span>
+          <span className="hover-text">링크 복사하기</span>
+        </LinkcopyButton>
+        <ShareButton onClick={handleSaveImage} $isSmallScreen={isSmallScreen}>
+          <FontAwesomeIcon icon={faDownload} />
+          <span>사진으로 저장하기</span>
+          <span className="hover-text">사진 저장하기</span>
+        </ShareButton>
       </ButtonGroup>
     </Wrapper>
   );
