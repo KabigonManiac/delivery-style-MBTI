@@ -55,8 +55,8 @@ const Spinner = styled.div`
   border: 8px solid #f3f3f3; /* 배경 */
   border-top: 8px solid #3498db; /* 상단 색상 */
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "40px" : "130px")};
+  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "40px" : "130px")};
   animation: spin 2s linear infinite;
 
   @keyframes spin {
@@ -73,7 +73,10 @@ const ImageWrapper = styled.div`
   position: absolute; /* 부모인 SpinnerWrapper를 기준으로 위치 지정 */
   top: 40%; /* 세로 중앙 정렬 */
   left: 50%; /* 가로 중앙 정렬 */
-  transform: translate(-50%, 18%); /* 정확한 중앙 정렬을 위해 이동 */
+  transform: ${({ $isSmallScreen }) =>
+    $isSmallScreen
+      ? "translate(-50%, 26%)"
+      : "translate(-50%, 5%)"}; /* 정확한 중앙 정렬을 위해 이동 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,8 +87,8 @@ const ImageWrapper = styled.div`
 `;
 
 const FoodImage = styled.img`
-  width: 40px;
-  height: 40px;
+  width: ${({ $isSmallScreen }) => ($isSmallScreen ? "40px" : "100px")};
+  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "40px" : "100px")};
 `;
 
 const LoadingText = styled.div`
@@ -109,9 +112,13 @@ const Loading = () => {
 
   return (
     <SpinnerWrapper $isSmallScreen={isSmallScreen}>
-      <Spinner />
+      <Spinner $isSmallScreen={isSmallScreen} />
       <ImageWrapper $isVisible={true}>
-        <FoodImage src={images[currentImageIndex]} alt="Food" />
+        <FoodImage
+          $isSmallScreen={isSmallScreen}
+          src={images[currentImageIndex]}
+          alt="Food"
+        />
       </ImageWrapper>
       <LoadingText>로딩중입니다! 재미있는 테스트 시간 되세요 😊</LoadingText>
     </SpinnerWrapper>

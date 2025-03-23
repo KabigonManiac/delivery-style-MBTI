@@ -87,6 +87,7 @@ const StartButton = styled.div`
   background: #2e2e2e;
   color: #fff;
   padding: 10px;
+  margin-top: ${({ $isSmallScreen }) => ($isSmallScreen ? "0" : "30px")};
   border-radius: 8px;
   transition: all 0.3s;
   cursor: pointer;
@@ -129,7 +130,9 @@ const Home = () => {
           배달에서부터 음식 습관까지, <br />
           나만의 독특한 MBTI를 찾아보세요!
         </Desc>
-        <StartButton onClick={handleClickButton}>테스트 시작</StartButton>
+        <StartButton $isSmallScreen={isSmallScreen} onClick={handleClickButton}>
+          테스트 시작
+        </StartButton>
       </Contents>
     </Wrapper>
   );
