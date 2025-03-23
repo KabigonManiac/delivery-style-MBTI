@@ -14,7 +14,7 @@ const Sharebtn = styled.div`
 
 const KakaoShareButton = ({ data }) => {
   console.log(data);
-  const url = "https://cutecatmbti.netlify.app";
+  const url = "https://deliverymbti.netlify.app/";
   const resultURL = window.location.href;
 
   useEffect(() => {
