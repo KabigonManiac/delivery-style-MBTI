@@ -9,7 +9,7 @@ import answera08 from "../image/answera08.jpg";
 import answera09 from "../image/answera09.jpg";
 import answera10 from "../image/answera10.jpg";
 import answera11 from "../image/answera11.jpg";
-import answerb01 from "../image/answerb01.jpg";
+import answerb01 from "../image/answerb01.gif";
 import answerb02 from "../image/answerb02.jpg";
 import answerb03 from "../image/answerb03.gif";
 import answerb04 from "../image/answerb04.jpg";
