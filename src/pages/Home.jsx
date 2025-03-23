@@ -45,9 +45,9 @@ const Contents = styled.div`
 
 const LogoImg = styled.div`
   & > img {
-    width: 350px;
-    height: 350px;
-    border: 4px solid #fff;
+    width: 300px;
+    height: 300px;
+    border: 4px solid #ddd;
     object-fit: cover;
   }
 `;
@@ -66,7 +66,7 @@ const Home = () => {
           내 음식 취향과 배달 습관, MBTI로 알아보자!
         </Title>
         <LogoImg>
-          <img className="rounded-circle" src="/img/mainimg.jpeg" />
+          <img className="rounded-circle" src="/img/mainbg.jpg" />
         </LogoImg>
         <Desc $isSmallScreen={isSmallScreen}>
           배달에서부터 음식 습관까지, 나만의 독특한 MBTI를 찾아보세요!

@@ -24,6 +24,7 @@ const Title = styled.div`
   padding: 8px 16px;
   background: rgba(255, 255, 255 0.2);
   color: #181818;
+  font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "18px" : "30px")};
   font-weight: bold;
   border-radius: 8px;
 `;
@@ -33,17 +34,17 @@ const ButtonGroup = styled.div`
   flex-direction: ${({ $isSmallScreen }) => ($isSmallScreen ? "column" : "")};
   justify-content: center;
   align-items: center;
-  gap: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "40px")};
+  gap: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "40px")};
   & > button {
-    width: ${({ $isSmallScreen }) => ($isSmallScreen ? "300px" : "600px")};
+    width: ${({ $isSmallScreen }) => ($isSmallScreen ? "320px" : "600px")};
     height: ${({ $isSmallScreen }) => ($isSmallScreen ? "200px" : "400px")};
-    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "16px" : "18px")};
+    font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "18px")};
   }
 `;
 
 const CustomButton = styled(Button)`
-  background: "#ddd";
-  border: 2px solid #ddd;
+  background: "rgba(256,256,256, 0.2)";
+  border: 2px solid transparent;
   color: "#181818";
   display: flex;
   flex-direction: column;
@@ -133,10 +134,10 @@ const Question = () => {
               src={QuestionData[questionNo].imagea}
               alt="Answer A"
               style={{
-                width: isSmallScreen ? "180px" : "500px",
+                width: isSmallScreen ? "200px" : "500px",
                 height: isSmallScreen ? "auto" : "300px",
                 objectFit: "cover",
-                marginTop: "10px",
+                marginBottom: "10px",
               }}
             />
             {QuestionData[questionNo].answera}
@@ -160,7 +161,7 @@ const Question = () => {
               alt="Answer B"
               style={{
                 width: isSmallScreen ? "180px" : "500px",
-                height: isSmallScreen ? "auto" : "300px",
+                height: isSmallScreen ? "120px" : "300px",
                 objectFit: "cover",
                 marginBottom: "10px",
               }}
