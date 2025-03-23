@@ -108,7 +108,7 @@ const RestartButton = styled.div`
   align-items: center;
   width: ${({ $isSmallScreen }) => ($isSmallScreen ? "60px" : "120px")};
   background-color: dodgerblue;
-  border-radius: 8px;
+  border-radius: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "8px")};
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "16px")};
   position: relative;
   cursor: pointer;
@@ -140,7 +140,7 @@ const LinkcopyButton = styled.div`
   align-items: center;
   width: ${({ $isSmallScreen }) => ($isSmallScreen ? "60px" : "120px")};
   background-color: #000;
-  border-radius: 8px;
+  border-radius: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "8px")};
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "20px" : "16px")};
   position: relative;
   cursor: pointer;
@@ -151,7 +151,7 @@ const LinkcopyButton = styled.div`
   .hover-text {
     display: none; /* 기본적으로 숨김 */
     position: absolute;
-    left: -4px;
+    left: 0;
     bottom: -20px;
     font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
     color: #181818;
@@ -173,7 +173,7 @@ const ShareButton = styled.div`
   width: ${({ $isSmallScreen }) => ($isSmallScreen ? "56px" : "120px")};
   background-color: #fff;
   color: #181818;
-  border-radius: 8px;
+  border-radius: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "8px")};
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "28px" : "16px")};
   position: relative;
   cursor: pointer;

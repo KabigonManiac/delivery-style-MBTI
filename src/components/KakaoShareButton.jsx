@@ -20,7 +20,7 @@ const Sharebtn = styled.button`
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "60px" : "40px")};
   background-color: #ffeb00;
   border: none;
-  border-radius: 8px;
+  border-radius: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "8px")};
   position: relative;
   cursor: pointer;
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "0px" : "16px")};
@@ -32,7 +32,7 @@ const Sharebtn = styled.button`
   .hover-text {
     display: none; /* 기본적으로 숨김 */
     position: absolute;
-    left: -4px;
+    left: -10px;
     bottom: -20px;
     font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "12px" : "14px")};
     color: #181818;
