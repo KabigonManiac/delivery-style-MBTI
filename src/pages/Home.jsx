@@ -47,7 +47,9 @@ const LogoImg = styled.div`
   & > img {
     width: 300px;
     height: 300px;
-    border: 4px solid #ddd;
+    padding: 10px;
+    margin: ${({ $isSmallScreen }) => ($isSmallScreen ? "16px" : "40px")};
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     object-fit: cover;
   }
 `;
@@ -65,7 +67,7 @@ const Home = () => {
         <Title $isSmallScreen={isSmallScreen}>
           내 음식 취향과 배달 습관, MBTI로 알아보자!
         </Title>
-        <LogoImg>
+        <LogoImg $isSmallScreen={isSmallScreen}>
           <img className="rounded-circle" src="/img/mainbg.jpg" />
         </LogoImg>
         <Desc $isSmallScreen={isSmallScreen}>
