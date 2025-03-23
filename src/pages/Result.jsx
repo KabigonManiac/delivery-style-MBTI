@@ -40,6 +40,7 @@ const InnerLineTop = styled.div`
   background-color: ${({ $isSmallScreen }) =>
     $isSmallScreen ? "dodgerblue" : "transparent"};
   margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const InnerLineBottom = styled.div`
@@ -47,7 +48,7 @@ const InnerLineBottom = styled.div`
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "10px")};
   background-color: ${({ $isSmallScreen }) =>
     $isSmallScreen ? "dodgerblue" : "transparent"};
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
 `;
 
