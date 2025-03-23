@@ -4,15 +4,34 @@ import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { QuestionData } from "../assets/questiondata";
+import FoodBg from "../image/foodbg.jpg";
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "84vh" : "98vh")};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  background: ${({ $isSmallScreen }) =>
+    $isSmallScreen ? "transparent" : "#fff"};
+  overflow: auto;
+
+  // 배경 흐림 효과 적용
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${({ $isSmallScreen }) =>
+      $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "none"};
+    filter: brightness(0.9); /* 밝기 조정 */
+    opacity: 0.5; /* 투명도 조정 */
+    z-index: -1; /* 배경이 뒤로 가도록 설정 */
+  }
 `;
 
 const Title = styled.div`
@@ -43,7 +62,7 @@ const ButtonGroup = styled.div`
 `;
 
 const CustomButton = styled(Button)`
-  background: "rgba(0,0,0, 0.8)";
+  background: "rgba(0, 0, 0, 0), 0.8)";
   border: 2px solid transparent;
   color: "#fff";
   display: flex;
@@ -53,7 +72,7 @@ const CustomButton = styled(Button)`
   font-weight: bold;
   &:hover {
     background: ${({ $isClicked, $isSmallScreen }) =>
-      $isSmallScreen && $isClicked ? "#fff" : "rgba(0,0,0, 0.8)"};
+      $isSmallScreen && $isClicked ? "#fff" : "rgba(255, 35, 35, 0.8)"};
     border: 2px solid ${({ $isClicked }) => ($isClicked ? "#ddd" : "#fff")};
     color: ${({ $isClicked, $isSmallScreen }) =>
       $isSmallScreen && $isClicked ? "#181818" : "#fff"};

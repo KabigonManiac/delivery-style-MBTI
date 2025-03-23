@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
+import FoodBg from "../image/foodbg.jpg";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,9 @@ const Wrapper = styled.div`
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "86vh" : "100vh")};
   width: 100%;
   color: #0d0d0d;
+  background: ${({ $isSmallScreen }) =>
+    $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "#fff"};
+  overflow: auto;
 `;
 
 const Header = styled.div`

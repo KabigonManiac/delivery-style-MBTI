@@ -10,18 +10,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import FoodBg from "../image/foodbg.jpg";
 
 const Wrapper = styled.div`
-  height: ${({ $isSmallScreen }) =>
-    $isSmallScreen ? "80vh" : "88vh"}; /* 높이 조정 */
+  height: ${({ $isSmallScreen }) => ($isSmallScreen ? "80vh" : "88vh")};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   color: #fff;
-  background: #fff;
-  overflow: auto; /* 내부 스크롤 허용 */
+  background: ${({ $isSmallScreen }) =>
+    $isSmallScreen ? `url(${FoodBg}) no-repeat center/cover` : "#fff"};
+  overflow: auto;
 `;
 
 const Inner = styled.div`
@@ -38,7 +39,7 @@ const InnerLineTop = styled.div`
   width: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "90%")};
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "10px")};
   background-color: ${({ $isSmallScreen }) =>
-    $isSmallScreen ? "dodgerblue" : "transparent"};
+    $isSmallScreen ? "#ddd" : "transparent"};
   margin-bottom: 20px;
 `;
 
@@ -46,9 +47,8 @@ const InnerLineBottom = styled.div`
   width: ${({ $isSmallScreen }) => ($isSmallScreen ? "100%" : "90%")};
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "10px")};
   background-color: ${({ $isSmallScreen }) =>
-    $isSmallScreen ? "dodgerblue" : "transparent"};
+    $isSmallScreen ? "#ddd" : "transparent"};
   margin-top: 40px;
-  margin-bottom: 20px;
 `;
 
 const Title = styled.div`
@@ -184,6 +184,13 @@ const ShareButton = styled.div`
   }
 `;
 
+const ImgInner = styled.div`
+  background: #fff;
+  border-radius: 100%;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+`;
+
 const Result = () => {
   const [resultData, setResultData] = useState({});
   const [searchParams] = useSearchParams();
@@ -227,17 +234,19 @@ const Result = () => {
       <Inner $isSmallScreen={isSmallScreen}>
         <Title $isSmallScreen={isSmallScreen}>나만의 배달 습관 MBTI</Title>
         <SubTitle $isSmallScreen={isSmallScreen}>결과보기</SubTitle>
-        <img
-          src={resultData.image}
-          alt="결과 이미지"
-          style={{
-            borderRadius: "50%",
-            width: "200px",
-            height: "200px",
-            objectFit: "cover",
-            aspectRatio: "1/1",
-          }}
-        />
+        <ImgInner>
+          <img
+            src={resultData.image}
+            alt="결과 이미지"
+            style={{
+              borderRadius: "50%",
+              width: "200px",
+              height: "200px",
+              objectFit: "cover",
+              aspectRatio: "1/1",
+            }}
+          />
+        </ImgInner>
         <Desc $isSmallScreen={isSmallScreen}>
           내 음식 취향과 배달 습관에 따른 MBTI는 <br />
           <Highlight>
