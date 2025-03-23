@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodBg from "../image/foodbg.jpg";
+import Loading from "./\bLodading";
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,8 +17,7 @@ const Wrapper = styled.div`
   background: ${({ $isSmallScreen }) =>
     $isSmallScreen ? "transparent" : "#fff"};
   overflow: auto;
-
-  // 배경 흐림 효과 적용
+  position: relative; /* 로딩 컴포넌트를 절대적으로 배치하기 위해 */
   &::before {
     content: "";
     position: absolute;
@@ -100,10 +100,19 @@ const StartButton = styled.div`
 
 const Home = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
   const handleClickButton = () => {
-    navigate("/question");
+    setIsLoading(true); // 로딩 시작
+    setTimeout(() => {
+      navigate("/question"); // 로딩 후 /question 페이지로 이동
+    }, 6000); // 2초 후 이동
   };
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
+
+  if (isLoading) {
+    return <Loading />; // 로딩 중일 때 스피너 표시
+  }
+
   return (
     <Wrapper $isSmallScreen={isSmallScreen}>
       <Header $isSmallScreen={isSmallScreen}>
