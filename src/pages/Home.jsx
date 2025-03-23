@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
 import FoodBg from "../image/foodbg.jpg";
 
 const Wrapper = styled.div`
@@ -84,6 +83,21 @@ const LogoImg = styled.div`
   }
 `;
 
+const StartButton = styled.div`
+  background: #2e2e2e;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background: #fff;
+    color: #2e2e2e;
+    font-weight: bold;
+    transform: scale(1.4);
+  }
+`;
+
 const Home = () => {
   const navigate = useNavigate();
   const handleClickButton = () => {
@@ -100,13 +114,13 @@ const Home = () => {
           내 음식 취향과 배달 습관, MBTI로 알아보자!
         </Title>
         <LogoImg $isSmallScreen={isSmallScreen}>
-          <img className="rounded-circle" src="/img/mainbg.jpg" />
+          <img className="rounded-circle" src="/img/mainbg2.jpg" />
         </LogoImg>
         <Desc $isSmallScreen={isSmallScreen}>
           배달에서부터 음식 습관까지, <br />
           나만의 독특한 MBTI를 찾아보세요!
         </Desc>
-        <Button onClick={handleClickButton}>테스트 시작</Button>
+        <StartButton onClick={handleClickButton}>테스트 시작</StartButton>
       </Contents>
     </Wrapper>
   );
