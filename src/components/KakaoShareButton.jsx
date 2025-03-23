@@ -32,7 +32,7 @@ const KakaoShareButton = ({ mbti }) => {
     Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "예비 집사 판별기 결과",
+        title: "내 음식 취향과 배달 습관, MBTI 결과",
         description: `내 음식 취향과 배달 습관에 따른 MBTI 는 ${resultData.best} ${resultData.name}입니다.`,
         imageUrl: `${url}${resultData.image}`,
         link: {
