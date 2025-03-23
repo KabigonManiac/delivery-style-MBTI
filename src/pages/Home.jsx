@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "86vh" : "100vh")};
   width: 100%;
-  color: #0d0d0d;
+  color: #1e1e1e;
   background: ${({ $isSmallScreen }) =>
     $isSmallScreen ? "transparent" : "#fff"};
   overflow: auto;
@@ -42,11 +42,11 @@ const Header = styled.div`
 const Title = styled.div`
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "16px" : "30px")};
   font-weight: bold;
+  color: #1e1e1e;
   margin: ${({ $isSmallScreen }) => ($isSmallScreen ? "18px 0 0 0" : "20px")};
 `;
 
 const Desc = styled.div`
-  color: #0d0d0d;
   padding: 10px;
   border-radius: 8px;
   text-align: center;
@@ -54,6 +54,8 @@ const Desc = styled.div`
   margin: ${({ $isSmallScreen }) => ($isSmallScreen ? "0" : "10px 0")};
   margin-bottom: ${({ $isSmallScreen }) => ($isSmallScreen ? "10px" : "0")};
   font-size: ${({ $isSmallScreen }) => ($isSmallScreen ? "16px" : "20px")};
+  color: #3a3a3a;
+  line-height: 1.4;
 `;
 
 const Highlight = styled.span`
