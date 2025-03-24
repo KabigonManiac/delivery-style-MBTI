@@ -84,10 +84,16 @@ const CustomButton = styled(Button)`
 
   @media (max-width: 768px) {
     &:hover {
-      background: rgba(255, 35, 35, 0.8); /* 모바일에서도 동일한 배경 */
-      border: 2px solid #fff;
+      background: rgba(0, 0, 0, 0.8); /* 원래 배경 유지 */
+      border: 2px solid transparent;
       color: #fff;
       transform: none;
+    }
+
+    &:active {
+      background: rgba(0, 0, 0, 0.8); /* 클릭 효과도 없앰 */
+      border: 2px solid transparent;
+      color: #fff;
     }
   }
 `;
