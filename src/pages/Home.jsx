@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodBg from "../image/foodbg.jpg";
+import FoodBg2 from "../image/foodbg2.jpg";
 import Loading from "./Lodading";
 
 const Wrapper = styled.div`
@@ -15,7 +16,10 @@ const Wrapper = styled.div`
   width: 100%;
   color: #1e1e1e;
   background: ${({ $isSmallScreen }) =>
-    $isSmallScreen ? "transparent" : "#fff"};
+    $isSmallScreen
+      ? "transparent"
+      : `url(${FoodBg2}) no-repeat center/cover`}; /* 데스크톱 배경 */
+
   overflow: auto;
   position: relative; /* 로딩 컴포넌트를 절대적으로 배치하기 위해 */
   &::before {

@@ -34,7 +34,7 @@ export const QuestionData = [
   {
     id: 2,
     title: "2. 혼자 먹을 때 VS 같이 먹을 때, 더 행복한 순간은?",
-    answera: "친구들이랑 수다 떨면서 먹어야 제맛! 맛있는 건 나누는 게 국룰!",
+    answera: "친구들이랑 수다 떨면서 먹어야 제맛이지!",
     imagea: answera02,
     answerb: "내 방에서 조용히 혼밥+넷플 조합이 최고지!",
     imageb: answerb02,
@@ -43,7 +43,7 @@ export const QuestionData = [
   {
     id: 3,
     title: "3. 배달음식 JMT 발견! 나의 리액션은?",
-    answera: "SNS에 자랑부터! 사진 찍고 리뷰도 필수로 남긴다. (파워리뷰어✨)",
+    answera: "얘들아 맛있겠지? 사진 찍고 스토리 공유~ 리뷰도 남겨준다.",
     imagea: answera03,
     answerb: "와, 개맛있다.. 속으로 감탄하고 다음에 또 시켜야지 함.",
     imageb: answerb03,

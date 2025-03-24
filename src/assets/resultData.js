@@ -57,7 +57,7 @@ export const ResultData = [
   },
   {
     id: 9,
-    name: "편안한 맛 찾는 고수",
+    name: "편안한 맛잘알",
     best: "ISFP",
     desc: "자연스럽고 편안한 음식을 선호하며, 새로운 음식보다는 익숙한 음식을 좋아하는 성격. 감성적이고 차분하다.",
     image: "/img/result09.jpg",
@@ -71,7 +71,7 @@ export const ResultData = [
   },
   {
     id: 11,
-    name: "창의적 맛러",
+    name: "창의적 먹방러",
     best: "INFP",
     desc: "새로운 음식을 시도하며 창의적이고 독특한 조합을 찾아내는 성격. 감성적이고 예술적인 성향이 강하다.",
     image: "/img/result11.jpeg",

@@ -5,7 +5,8 @@ import { useMediaQuery } from "react-responsive";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { QuestionData } from "../assets/questiondata";
 import FoodBg from "../image/foodbg.jpg";
-import LoadingResult from "./LodadingResult";
+import FoodBg2 from "../image/foodbg2.jpg";
+import LoadingResult from "./Lodadingresult";
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,9 +16,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${({ $isSmallScreen }) =>
-    $isSmallScreen ? "transparent" : "#fff"};
   overflow: auto;
+  background: ${({ $isSmallScreen }) =>
+    $isSmallScreen
+      ? "transparent"
+      : `url(${FoodBg2}) no-repeat center/cover`}; /* 데스크톱 배경 */
+
   &::before {
     content: "";
     position: absolute;
@@ -61,22 +65,30 @@ const ButtonGroup = styled.div`
 `;
 
 const CustomButton = styled(Button)`
-  background: "rgba(0, 0, 0, 0), 0.8)";
+  background: rgba(0, 0, 0, 0.8);
   border: 2px solid transparent;
-  color: "#fff";
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  transition: all 0.2s ease-in-out;
+
   &:hover {
-    background: ${({ $isClicked, $isSmallScreen }) =>
-      $isSmallScreen && $isClicked ? "#fff" : "rgba(255, 35, 35, 0.8)"};
-    border: 2px solid ${({ $isClicked }) => ($isClicked ? "#ddd" : "#fff")};
-    color: ${({ $isClicked, $isSmallScreen }) =>
-      $isSmallScreen && $isClicked ? "#181818" : "#fff"};
+    background: rgba(255, 35, 35, 0.8); /* 호버 시 항상 빨간 배경 */
+    border: 2px solid #fff;
+    color: #fff; /* 글자색을 항상 흰색으로 유지 */
     transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    &:hover {
+      background: rgba(255, 35, 35, 0.8); /* 모바일에서도 동일한 배경 */
+      border: 2px solid #fff;
+      color: #fff;
+      transform: none;
+    }
   }
 `;
 

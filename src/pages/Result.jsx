@@ -10,6 +10,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import FoodBg from "../image/foodbg.jpg";
+import FoodBg2 from "../image/foodbg2.jpg";
 
 const Wrapper = styled.div`
   height: ${({ $isSmallScreen }) => ($isSmallScreen ? "84.88vh" : "88vh")};
@@ -20,9 +21,12 @@ const Wrapper = styled.div`
   width: 100%;
   color: #fff;
   background: ${({ $isSmallScreen }) =>
-    $isSmallScreen ? "transparent" : "#fff"};
-  overflow: auto;
+    $isSmallScreen
+      ? "transparent"
+      : `url(${FoodBg2}) no-repeat center/cover`}; /* 데스크톱 배경 */
 
+  overflow: auto;
+  position: relative; /* 로딩 컴포넌트를 절대적으로 배치하기 위해 */
   // 배경 흐림 효과 적용
   &::before {
     content: "";
