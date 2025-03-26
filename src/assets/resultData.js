@@ -11,7 +11,7 @@ export const ResultData = [
     name: "친구랑 맛있는 탐험",
     best: "ESFP",
     desc: "새로운 음식을 시도하는 걸 즐기고, 친구들과 함께 먹는 걸 선호하는 성격. 활발하고, 사교적인 특징을 보인다.",
-    image: "/img/result022.gif",
+    image: "/img/result02.gif",
   },
   {
     id: 3,
@@ -106,9 +106,9 @@ export const ResultData = [
   },
   {
     id: 16,
-    name: "혁신적 미식러",
-    best: "ENFJ",
-    desc: "타인의 의견을 반영하여 음식을 선택하는 경향이 있으며, 혁신적인 조합을 시도하는 것을 좋아한다. 지도력 있고 카리스마가 있다.",
+    name: "다정한 미식가",
+    best: "ESFJ",
+    desc: "주변 사람들과 함께 맛있는 음식을 나누는 것을 즐기며, 모두가 만족할 수 있는 선택을 하려고 하는 성격. 따뜻하고 배려심이 많다.",
     image: "/img/result16.jpeg",
   },
 ];
